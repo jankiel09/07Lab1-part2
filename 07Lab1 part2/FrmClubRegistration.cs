@@ -15,6 +15,7 @@ namespace _07Lab1_part2
         private ClubRegistrationQuery clubRegistrationQuery;
         private int ID, Age, count;
         private string FirstName, MiddleName, LastName, Gender, Program;
+        private long StudentID;
 
         public FrmClubRegistration()
         {
@@ -23,14 +24,13 @@ namespace _07Lab1_part2
             count = 0; 
         }
 
-     
         // Update Button
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            FrmUpdateMember updateForm = new FrmUpdateMember();
+            updateForm.ShowDialog();
+            RefreshListOfClubMembers();
         }
-
-        private long StudentID;
 
         // Refresh Button
         private void button3_Click(object sender, EventArgs e)
@@ -82,8 +82,6 @@ namespace _07Lab1_part2
             cbProgram.SelectedIndex = -1;
         }
 
-
-
         public void RefreshListOfClubMembers()
         {
             if (clubRegistrationQuery != null)
@@ -106,8 +104,6 @@ namespace _07Lab1_part2
         {
             ID = ++count;
             return ID;
-
-
         }
     }
 }

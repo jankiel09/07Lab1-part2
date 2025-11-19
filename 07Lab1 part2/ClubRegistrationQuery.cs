@@ -65,24 +65,46 @@ namespace _07Lab1_part2
             return true;
         }
 
+        // update method
+        public bool UpdateMember(long StudentID, string FirstName, string MiddleName,
+                               string LastName, int Age, string Gender, string Program)
+        {
+            string updateQuery = "UPDATE ClubMembers SET FirstName=@FirstName, MiddleName=@MiddleName, " +
+                               "LastName=@LastName, Age=@Age, Gender=@Gender, Program=@Program " +
+                               "WHERE StudentId=@StudentID";
 
+            sqlCommand = new SqlCommand(updateQuery, sqlConnect);
 
+            sqlCommand.Parameters.Add("@StudentID", SqlDbType.BigInt).Value = StudentID;
+            sqlCommand.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = FirstName;
+            sqlCommand.Parameters.Add("@MiddleName", SqlDbType.VarChar).Value = MiddleName;
+            sqlCommand.Parameters.Add("@LastName", SqlDbType.VarChar).Value = LastName;
+            sqlCommand.Parameters.Add("@Age", SqlDbType.Int).Value = Age;
+            sqlCommand.Parameters.Add("@Gender", SqlDbType.VarChar).Value = Gender;
+            sqlCommand.Parameters.Add("@Program", SqlDbType.VarChar).Value = Program;
 
+            sqlConnect.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnect.Close();
 
+            return true;
+        }
+        
+        // retrieve method
+        public DataRow GetMemberByStudentId(long StudentID)
+        {
+            string query = "SELECT * FROM ClubMembers WHERE StudentId=@StudentID";
+            sqlCommand = new SqlCommand(query, sqlConnect);
+            sqlCommand.Parameters.Add("@StudentID", SqlDbType.BigInt).Value = StudentID;
 
+            sqlAdapter = new SqlDataAdapter(sqlCommand);
+            DataTable dt = new DataTable();
+            sqlAdapter.Fill(dt);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            if (dt.Rows.Count > 0)
+                return dt.Rows[0];
+            else
+                return null;
+        }
     }
 }
