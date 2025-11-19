@@ -17,6 +17,11 @@ namespace _07Lab1_part2
             InitializeComponent();
         }
 
+        private ClubRegistrationQuery clubRegistrationQuery;
+        private int ID, Age, count;
+        private string FirstName, MiddleName, LastName, Gender, Program;
+        private long StudentID;
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
