@@ -16,7 +16,7 @@ namespace _07Lab1_part2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmClubRegistration());
         }
     }
 }
