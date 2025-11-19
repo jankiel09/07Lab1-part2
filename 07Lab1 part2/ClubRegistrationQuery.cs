@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
 using System.Windows.Forms;
 
 namespace _07Lab1_part2
@@ -15,25 +16,28 @@ namespace _07Lab1_part2
         private SqlCommand sqlCommand;
         private SqlDataAdapter sqlAdapter;
         private SqlDataAdapter sqlReader;
+        private string connectionString;
 
         public DataTable dataTable;
         public BindingSource bindingSource;
         public string _FirstName, _MiddleName, _LastName, _Gender, _Program;
-        private string connectionString = "Data Source=LAB-A-PC00;Initial Catalog=PaguiliganClubDB;Persist " +
-            "Security Info=True;User ID=paguiligan.j;Password=***********;Trust Server Certificate=True";
+        public int _Age;
 
-        ClubRegistrationQuery ()
+        
+       public ClubRegistrationQuery ()
         {
+            connectionString = @"Data Source = KIEL\SQLEXPRESS01; Initial Catalog = PaguiliganClubDB; Integrated Security = True; Trust Server Certificate = True";
             sqlConnect = new SqlConnection(connectionString);
             dataTable = new DataTable();
             bindingSource = new BindingSource();
         }
 
-        public Boolean DisplayList()
+        public bool DisplayList()
         {
-            string ViewClubMembers = "SELECT S* FROM ClubRegistrations";
-            dataTable.Clear();
+            string ViewClubMembers = "SELECT StudentId, FirstName, MiddleName, LastName, Age, Gender, Program FROM ClubMembers";
+         
             sqlAdapter = new SqlDataAdapter(ViewClubMembers, sqlConnect);
+            dataTable.Clear();
             sqlAdapter.Fill(dataTable);
             bindingSource.DataSource = dataTable;
 

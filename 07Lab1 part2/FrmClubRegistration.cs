@@ -28,7 +28,7 @@ namespace _07Lab1_part2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ClubRegistrationQuery clubRegistrationQuery = new ClubRegistrationQuery();
+
             clubRegistrationQuery.RegisterStudent();
         }
 
