@@ -20,11 +20,38 @@ namespace _07Lab1_part2
         private ClubRegistrationQuery clubRegistrationQuery;
         private int ID, Age, count;
         private string FirstName, MiddleName, LastName, Gender, Program;
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RefreshListOfClubMembers();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClubRegistrationQuery clubRegistrationQuery = new ClubRegistrationQuery();
+            clubRegistrationQuery.RegisterStudent();
+        }
+
         private long StudentID;
+
+        public void RefreshListOfClubMembers()
+        {
+            clubRegistrationQuery.DisplayList();
+            dataGridView1.DataSource = clubRegistrationQuery.bindingSource;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ClubRegistrationQuery clubRegistrationQuery = new ClubRegistrationQuery();
+            RefreshListOfClubMembers();
 
+        }
+
+
+        public int RegistrationID()
+        {
+            ID = ++count;
+            return ID;
         }
     }
 }

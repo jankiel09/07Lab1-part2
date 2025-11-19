@@ -47,16 +47,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -217,6 +218,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Register";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -237,14 +239,6 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "List of Club Members";
             // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label9.Location = new System.Drawing.Point(13, 247);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(514, 188);
-            this.label9.TabIndex = 17;
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(534, 247);
@@ -253,6 +247,15 @@
             this.button3.TabIndex = 18;
             this.button3.Text = "Refresh";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(13, 242);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(514, 197);
+            this.dataGridView1.TabIndex = 19;
             // 
             // FrmClubRegistration
             // 
@@ -267,6 +270,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -275,7 +279,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -294,6 +297,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
